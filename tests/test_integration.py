@@ -14,7 +14,6 @@ from simulator.simulator import Simulator
 class TestSystemIntegration:
     """Integration tests for the complete system."""
     
-    @pytest.mark.integration
     def test_complete_workflow_simple(self):
         """Test complete workflow with simple scenario."""
         # Create locations
@@ -53,7 +52,6 @@ class TestSystemIntegration:
         assert isinstance(results['served_late'], int)
         assert isinstance(results['total_late_minutes'], int)
     
-    @pytest.mark.integration
     def test_multi_location_network(self):
         """Test system with multiple locations and complex routing."""
         # Create a hub-and-spoke network
@@ -102,7 +100,6 @@ class TestSystemIntegration:
         for value in results.values():
             assert value >= 0
     
-    @pytest.mark.integration
     def test_capacity_constraints(self):
         """Test system behavior under capacity constraints."""
         # Create locations
@@ -135,7 +132,6 @@ class TestSystemIntegration:
         assert isinstance(results, dict)
         assert all(key in results for key in ['served_on_time', 'served_late', 'total_late_minutes'])
     
-    @pytest.mark.integration
     def test_timing_constraints(self):
         """Test system behavior with strict timing constraints."""
         # Create locations
@@ -167,7 +163,6 @@ class TestSystemIntegration:
         assert results['served_late'] >= 0
         assert results['total_late_minutes'] >= 0
     
-    @pytest.mark.integration
     def test_empty_system(self):
         """Test system behavior with no data."""
         # Empty system
@@ -187,7 +182,6 @@ class TestSystemIntegration:
         assert results['served_late'] == 0
         assert results['total_late_minutes'] == 0
     
-    @pytest.mark.integration
     def test_system_consistency(self):
         """Test that system produces consistent results across runs."""
         # Create simple system

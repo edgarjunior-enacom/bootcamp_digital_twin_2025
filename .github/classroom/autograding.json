@@ -1,0 +1,14 @@
+{
+  "docker_image": "python:3.8",
+  "autograding": {
+    "setup": [
+      "pip install -r requirements.txt"
+    ],
+    "test": [
+      "pytest tests/ -v --tb=short --strict-markers --disable-warnings"
+    ],
+    "timeout": 600,
+    "use_stdin": false,
+    "use_arguments": false
+  }
+} 
